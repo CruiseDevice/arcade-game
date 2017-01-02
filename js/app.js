@@ -41,36 +41,23 @@ Player.prototype.render = function(){
   ctx.drawImage(Resources.get(this.sprite),this.x,this.y);
 }
 
-var upPressed = false;
-var downPressed = false;
-var leftPressed = false;
-var rightpressed = false;
+// var upPressed = false;
+// var downPressed = false;
+// var leftPressed = false;
+// var rightpressed = false;
+
 Player.prototype.handleInput = function(event){
-  if(event == 37){
-    leftPressed = true;
+  if(event == 'left'){
+    this.x -= this.speed;
   }
-  if(event == 38){
-    upPressed = true;
+  if(event == 'right'){
+    this.x += this.speed;
   }
-  if(event == 39){
-    rightpressed = true;
+  if(event == 'up'){
+    this.y -= this.speed;
   }
-  if(event == 40){
-    downPressed = true;
-  }
-
-
-  if(leftPressed){
-    this.x -= 10;
-  }
-  if(rightpressed){
-    this.x += 10;
-  }
-  if(upPressed){
-    this.y += 10;
-  }
-  if(downPressed){
-    this.y -= 10;
+  if(event == 'down'){
+    this.y += this.speed;
   }
 }
 
@@ -98,4 +85,5 @@ document.addEventListener('keyup', function(e) {
     };
 
     player.handleInput(allowedKeys[e.keyCode]);
+    console.log(allowedKeys[e.keyCode]);
 });
