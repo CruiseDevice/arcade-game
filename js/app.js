@@ -40,7 +40,17 @@ var Player = function(x,y,speed){
   this.sprite = 'images/char-boy.png';
 };
 Player.prototype.update = function(dt){
-
+  // check if player runs into left, bottom, or right canvas walls
+  // prevent player from moving beyond canvas wall boundaries
+  if(this.y >= 383){
+    this.y = 383;
+  }
+  if(this.x > 402.5){
+    this.x = 402.5;
+  }
+  if(this.x < 2.5){
+    this.x = 2.5;
+  }
 };
 Player.prototype.render = function(){
   ctx.drawImage(Resources.get(this.sprite),this.x,this.y);
