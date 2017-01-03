@@ -9,3 +9,5 @@ For detailed instructions on how to get started, check out this [guide](https://
 [2D breakout game using pure JavaScript](https://developer.mozilla.org/en-US/docs/Games/Tutorials/2D_Breakout_game_pure_JavaScript)
 
 [How to make a simple HTML5 Canvas game](http://www.lostdecadegames.com/how-to-make-a-simple-html5-canvas-game/)
+
+[alexsales](https://github.com/alexsales/frontend-nanodegree-frogger-arcade-game)
