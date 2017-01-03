@@ -18,6 +18,11 @@ Enemy.prototype.update = function(dt) {
     // which will ensure the game runs at the same speed for
     // all computers.
     this.x += this.speed * dt;
+
+    // enemy starts from 0 when it reaches end of canvas
+    if(this.x >= 505){
+      this.x = 0;
+    }
 };
 
 // Draw the enemy on the screen, required method for game
@@ -71,6 +76,7 @@ var score = 0;
 var gameLevel = 1;
 var scoreLevelDiv = document.createElement('div');
 var enemy = new Enemy(0, Math.random() * 184 + 50, Math.random() * 256);
+console.log(enemy);
 allEnemies.push(enemy);
 
 
