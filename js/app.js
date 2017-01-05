@@ -39,11 +39,14 @@ var Player = function(x,y,speed){
   this.speed = speed;
   this.sprite = 'images/char-boy.png';
 };
+
 Player.prototype.update = function(dt){
   // check if player runs into left, bottom, or right canvas walls
   // prevent player from moving beyond canvas wall boundaries
+  //console.log("this.y: "+this.y);
   if(this.y >= 383){
     this.y = 383;
+    //console.log("this.x: "+this.x);
   }
   if(this.x > 402.5){
     this.x = 402.5;
@@ -51,10 +54,11 @@ Player.prototype.update = function(dt){
   if(this.x < 2.5){
     this.x = 2.5;
   }
+  this.checkCollision();
 };
 Player.prototype.render = function(){
   ctx.drawImage(Resources.get(this.sprite),this.x,this.y);
-}
+};
 
 // var upPressed = false;
 // var downPressed = false;
@@ -74,7 +78,7 @@ Player.prototype.handleInput = function(event){
   if(event == 'down'){
     this.y += this.speed;
   }
-}
+};
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
@@ -89,7 +93,20 @@ var enemy = new Enemy(0, Math.random() * 184 + 50, Math.random() * 256);
 console.log(enemy);
 allEnemies.push(enemy);
 
+Player.prototype.checkCollision = function(){
+  for (var i = 0; i < allEnemies.length; i++) {
+    if (allEnemies[i].x + 40 > this.x && this.x + 40 > allEnemies[i].x
+      && allEnemies[i].y + 50 > this.y && this.y + 50 > allEnemies[i].y) {
+      alert("YOU LOST");
+      this.reset();
+    };
+  };
+};
 
+Player.prototype.reset = function(){
+  this.x = 200;
+  this.y = 392;
+}
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
 document.addEventListener('keyup', function(e) {
