@@ -73,7 +73,12 @@ Player.prototype.handleInput = function(event){
     this.x += this.speed;
   }
   if(event == 'up'){
-    this.y -= this.speed;
+  //this.y -= this.speed;
+    this.y = this.y - 83;
+   if (this.y < 50) {
+     this.reset();
+     alert ("YOU WON");
+   };
   }
   if(event == 'down'){
     this.y += this.speed;
