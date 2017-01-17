@@ -107,7 +107,7 @@ Player.prototype.handleInput = function(event){
 var IncreaseEnemies = function(enemies){
   console.log(enemies);
   allEnemies.length = 0;
-
+-
   for(var i = 0; i < enemies; i++){
     var enemy = new Enemy(0, Math.random() * 184 + 50, Math.random() * 256);
     allEnemies.push(enemy);
@@ -132,7 +132,7 @@ Player.prototype.checkCollision = function(){
     if (allEnemies[i].x + 40 > this.x && this.x + 40 > allEnemies[i].x
       && allEnemies[i].y + 50 > this.y && this.y + 50 > allEnemies[i].y) {
       score = 0;
-      gameLevel = 0;
+      gameLevel = 1;
       alert("YOU LOST");
       this.reset();
     };
