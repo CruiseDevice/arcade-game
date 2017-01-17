@@ -76,14 +76,30 @@ Player.prototype.handleInput = function(event){
   //this.y -= this.speed;
     this.y = this.y - 83;
    if (this.y < 50) {
+    // alert ("YOU WON");
+    score += 1;
+    gameLevel += 1;
+     IncreaseEnemies(gameLevel);
      this.reset();
-     alert ("YOU WON");
    };
   }
   if(event == 'down'){
     this.y += this.speed;
   }
 };
+
+
+
+// Increase number of enemies as player finishes a level
+var IncreaseEnemies = function(enemies){
+  console.log(enemies);
+  allEnemies.length = 0;
+
+  for(var i = 0; i < enemies; i++){
+    var enemy = new Enemy(0, Math.random() * 184 + 50, Math.random() * 256);
+    allEnemies.push(enemy);
+  }
+}
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
@@ -102,6 +118,8 @@ Player.prototype.checkCollision = function(){
   for (var i = 0; i < allEnemies.length; i++) {
     if (allEnemies[i].x + 40 > this.x && this.x + 40 > allEnemies[i].x
       && allEnemies[i].y + 50 > this.y && this.y + 50 > allEnemies[i].y) {
+      score = 0;
+      gameLevel = 0;
       alert("YOU LOST");
       this.reset();
     };
@@ -111,6 +129,7 @@ Player.prototype.checkCollision = function(){
 Player.prototype.reset = function(){
   this.x = 200;
   this.y = 392;
+
 }
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
