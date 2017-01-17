@@ -58,12 +58,25 @@ Player.prototype.update = function(dt){
 };
 Player.prototype.render = function(){
   ctx.drawImage(Resources.get(this.sprite),this.x,this.y);
+  displayScoreAndLevel(score,gameLevel);
 };
 
 // var upPressed = false;
 // var downPressed = false;
 // var leftPressed = false;
 // var rightpressed = false;
+
+//function to display score and gameLevel
+var canvas = document.getElementByTagName
+var displayScoreAndLevel = function(score,gameLevel){
+  var canvas = document.getElementsByTagName('canvas');
+  var firstCanvasTag = canvas[0];
+
+   // add player score and level to div element created
+   scoreLevelDiv.innerHTML = 'Score: ' + score
+       + ' / ' + 'Level: ' + gameLevel;
+   document.body.insertBefore(scoreLevelDiv, firstCanvasTag[0]);
+}
 
 Player.prototype.handleInput = function(event){
   if(event == 'left'){
